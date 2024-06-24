@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item">
                     {% if cliente.id %}
-                        <a class="nav-link" href="{% url 'exame_list' cliente.id %}">Exames</a>
+                        <a class="nav-link " href="{% url 'exame_list' cliente.id %}">Exames</a>
                     {% else %}
                     <!-- Tratar o caso em que cliente.id está vazio -->
                     <a class="nav-link disabled" href="#">Exames (indisponível)</a>
