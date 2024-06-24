@@ -1,0 +1,37 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+<h2>Lista de Clientes</h2>
+<a href="{% url 'cliente_create' %}" class="btn btn-primary mb-3">Novo Cliente</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Data de Nascimento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.cpf }}</td>
+            <td>{{ cliente.telefone }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.data_nascimento }}</td>
+            <td>
+                <a href="{% url 'cliente_update' cliente.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'cliente_delete' cliente.id %}" class="btn btn-danger btn-sm">Deletar</a>
+                <a href="{% url 'exame_list' cliente.id %}" class="btn btn-info btn-sm">Exames</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
