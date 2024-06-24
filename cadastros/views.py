@@ -18,7 +18,7 @@ def cliente_detail(request, id):
 
 def cliente_create(request):
     if request.method == "POST":
-        form = ClienteForm(request.POST)
+        form = ClienteForm(request.POST, request.FILES)     #adicionando foto
         if form.is_valid():
             form.save()
             return redirect('cliente_list')
