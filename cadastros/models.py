@@ -9,3 +9,13 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Exame(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    tipo_exame = models.CharField(max_length=100)
+    data_exame = models.DateField()
+    resultado = models.TextField(blank=True, null=True)
+    preco = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.tipo_exame} - {self.cliente.nome}"
