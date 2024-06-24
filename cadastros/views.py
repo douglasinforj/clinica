@@ -1,14 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cliente, Exame
 from .forms import ClienteForm, ExameForm
-from django.db.models import Sum
+from django.db.models import Sum, Q
 
 def home(request):
     return render(request, 'cadastros/home.html')
 
+
+
 def cliente_list(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'cadastros/cliente_list.html', {'clientes': clientes})
+    termo_pesquisa = request.GET.get('q','')
+
+    clientes = Cliente.objects.filter(
+        Q(nome__icontains = termo_pesquisa) |
+        Q(cpf__icontains = termo_pesquisa) 
+        
+    )
+    return render(request, 'cadastros/cliente_list.html', {'clientes': clientes, 'termo_pesquisa': termo_pesquisa})
+
+
 
 
 def cliente_detail(request, id):
