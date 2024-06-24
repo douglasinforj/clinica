@@ -13,7 +13,7 @@ def cliente_list(request):
 
 def cliente_detail(request, id):
     clientes = get_object_or_404(Cliente, id=id)
-    return render(request, 'cadastros/cliente_detail.html', {'cliente': clientes})
+    return render(request, 'cadastros/cliente_detail.html', {'clientes': clientes})
 
 
 def cliente_create(request):
