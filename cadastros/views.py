@@ -4,11 +4,11 @@ from .forms import ClienteForm, ExameForm
 from django.db.models import Sum
 
 def home(request):
-    return render(request, 'cadastro/home.html')
+    return render(request, 'cadastros/home.html')
 
 def cliente_list(request):
     clientes = Cliente.objects.all()
-    return render(request, 'cadastro/cliente_list.html')
+    return render(request, 'cadastros/cliente_list.html', {'clientes': clientes})
 
 def cliente_create(request):
     if request.method == "POST":
@@ -18,7 +18,7 @@ def cliente_create(request):
             return redirect('cliente_list')
     else:
         form = ClienteForm()
-    return render(request, 'cadastro/cliente_form.html', {'form': form})
+    return render(request, 'cadastros/cliente_form.html', {'form': form})
 
 def cliente_update(request, id):
     cliente = get_object_or_404(Cliente, id=id)
@@ -29,14 +29,14 @@ def cliente_update(request, id):
             return redirect('cliente_list')
     else:
         form = ClienteForm(instance=cliente)
-    return render(request, 'cadastro/cliente_form.html', {'form': form})
+    return render(request, 'cadastros/cliente_form.html', {'form': form})
 
 def cliente_delete(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     if request.method == "POST":
         cliente.delete()
         return redirect('cliente_list')
-    return render(request, 'cadastro/cliente_confirm_delete.html', {'cliente':cliente})
+    return render(request, 'cadastros/cliente_confirm_delete.html', {'cliente':cliente})
 
 def exame_list(request, id):
     cliente = get_object_or_404(Cliente, id=id)
@@ -55,7 +55,7 @@ def exame_create(request, id):
             return redirect('exame_list', id=cliente.id)
     else:
         form = ExameForm()
-    return render(request, 'cadastro/exame_form.html', {'form': form, 'cliente': cliente})  
+    return render(request, 'cadastros/exame_form.html', {'form': form, 'cliente': cliente})  
 
 def exame_update(request, cliente_id, id):
     exame = get_object_or_404(Exame, id=id, cliente_id=cliente_id)
