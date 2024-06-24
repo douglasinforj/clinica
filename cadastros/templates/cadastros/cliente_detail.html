@@ -2,11 +2,11 @@
 
 {% block content %}
   <h2>Detalhes do Cliente</h2>
-  <img src="{{ cliente.foto.url }}" alt="{{ cliente.nome }}" width="150">
-  <p><strong>Nome:</strong> {{ cliente.nome }}</p>
-  <p><strong>CPF:</strong> {{ cliente.cpf }}</p>
-  <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
-  <p><strong>Email:</strong> {{ cliente.email }}</p>
-  <p><strong>Data de Nascimento:</strong> {{ cliente.data_nascimento }}</p>
+  <img src="{{ clientes.foto.url }}" alt="{{ cliente.nome }}" width="150">
+  <p><strong>Nome:</strong> {{ clientes.nome }}</p>
+  <p><strong>CPF:</strong> {{ clientes.cpf }}</p>
+  <p><strong>Telefone:</strong> {{ clientes.telefone }}</p>
+  <p><strong>Email:</strong> {{ clientes.email }}</p>
+  <p><strong>Data de Nascimento:</strong> {{ clientes.data_nascimento }}</p>
   <a href="{% url 'cliente_list' %}">Voltar para a lista de clientes</a>
 {% endblock %}
