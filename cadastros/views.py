@@ -10,6 +10,12 @@ def cliente_list(request):
     clientes = Cliente.objects.all()
     return render(request, 'cadastros/cliente_list.html', {'clientes': clientes})
 
+
+def cliente_detail(request, id):
+    clientes = get_object_or_404(Cliente, id=id)
+    return render(request, 'cadastros/cliente_detail.html', {'cliente': clientes})
+
+
 def cliente_create(request):
     if request.method == "POST":
         form = ClienteForm(request.POST)
@@ -21,22 +27,22 @@ def cliente_create(request):
     return render(request, 'cadastros/cliente_form.html', {'form': form})
 
 def cliente_update(request, id):
-    cliente = get_object_or_404(Cliente, id=id)
+    clientes = get_object_or_404(Cliente, id=id)
     if request.method == "POST":
-        form = ClienteForm(request.POST, instance=cliente)
+        form = ClienteForm(request.POST, instance=clientes)
         if form.is_valid():
             form.save()
             return redirect('cliente_list')
     else:
-        form = ClienteForm(instance=cliente)
+        form = ClienteForm(instance=clientes)
     return render(request, 'cadastros/cliente_form.html', {'form': form})
 
 def cliente_delete(request, id):
-    cliente = get_object_or_404(Cliente, id=id)
+    clientes = get_object_or_404(Cliente, id=id)
     if request.method == "POST":
-        cliente.delete()
+        clientes.delete()
         return redirect('cliente_list')
-    return render(request, 'cadastros/cliente_confirm_delete.html', {'cliente':cliente})
+    return render(request, 'cadastros/cliente_confirm_delete.html', {'cliente':clientes})
 
 def exame_list(request, id):
     cliente = get_object_or_404(Cliente, id=id)
