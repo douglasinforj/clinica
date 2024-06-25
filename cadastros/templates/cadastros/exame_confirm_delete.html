@@ -1,0 +1,13 @@
+{% extends 'cadastros/base.html' %}
+
+{% block title %}Deletar Exame{% endblock %}
+
+{% block content %}
+<h2>Deletar Exame</h2>
+<p>Você tem certeza que deseja deletar o exame "{{ exame.tipo_exame }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Deletar</button>
+    <a href="{% url 'exame_list' exame.cliente.id %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
