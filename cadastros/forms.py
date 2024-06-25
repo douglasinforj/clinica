@@ -19,9 +19,9 @@ class ExameForm(forms.ModelForm):
         model = Exame
         fields = '__all__'
         widgets = {
-            'cliente': forms.TextInput(attrs={'class': 'form-control'}),
+            'cliente': forms.Select(attrs={'class': 'form-control'}),        #ajusta para selecionar usuários cadastrados
             'tipo_exame': forms.TextInput(attrs={'class': 'form-control'}),
-            'data_exame': forms.TextInput(attrs={'class': 'form-control'}),
+            'data_exame': forms.DateInput(attrs={'class': 'form-control', 'id': 'datepicker'}),
             'resultado': forms.Textarea(attrs={'class': 'form-control'}),
             'preco': forms.TextInput(attrs={'class': 'form-control'}),
             # Pode definir classes CSS para os campos aqui
