@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cliente, Exame
 from .forms import ClienteForm, ExameForm
-from django.db.models import Sum, Q
+from django.db.models import Sum, Q, F, DecimalField
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -61,13 +61,15 @@ def cliente_delete(request, id):
     return render(request, 'cadastros/cliente_confirm_delete.html', {'clientes':clientes})
 
 
+
 @login_required
 def exame_list(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     exames = Exame.objects.filter(cliente=cliente)
-    total_preco = exames.aggregate(Sum('preco'))['preco__sum'] or 0.00  # Calculando o total dos preços
+    total_preco = exames.aggregate(total=Sum(F('preco'), output_field=DecimalField(decimal_places=2, max_digits=10)))['total'] or 0.00
+    #arredonda o valor
+    total_preco = round(total_preco, 2)
     return render(request, 'cadastros/exame_list.html', {'exames': exames, 'cliente': cliente, 'total_preco': total_preco})
-
 
 @login_required
 def exame_create(request, id):
