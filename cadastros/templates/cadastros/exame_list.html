@@ -9,6 +9,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Tipo de Exame</th>
             <th>Data do Exame</th>
             <th>Resultado</th>
@@ -19,6 +20,7 @@
     <tbody>
         {% for exame in exames %}
         <tr>
+            <td>{{ exame.id }}</td>
             <td>{{ exame.tipo_exame }}</td>
             <td>{{ exame.data_exame }}</td>
             <td>{{ exame.resultado }}</td>
