@@ -129,3 +129,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_REDIRECT_URL = 'cliente_list'
 LOGOUT_REDIRECT_URL = 'login'
+
+LOGIN_URL = 'login'
+
