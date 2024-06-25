@@ -4,7 +4,7 @@ from .forms import ClienteForm, ExameForm
 from django.db.models import Sum, Q
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def home(request):
     return render(request, 'cadastros/home.html')
 

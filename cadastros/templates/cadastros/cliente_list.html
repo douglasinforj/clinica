@@ -5,6 +5,14 @@
 {% block content %}
 <h2>Lista de Clientes</h2>
 <a href="{% url 'cliente_create' %}" class="btn btn-primary mb-3">Novo Cliente</a>
+<br>
+<form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name='q' value="{{ termo_pesquisa }}">
+    <button class="btn btn-outline-success my-3 my-sm-3" type="submit">Search</button>
+  </form>
+<br>
+
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -19,7 +27,7 @@
     <tbody>
         {% for cliente in clientes %}
         <tr>
-            <td>{{ cliente.nome }}</td>
+            <td><a href="{% url 'cliente_detail' cliente.id %}">{{ cliente.nome }}</a></td>
             <td>{{ cliente.cpf }}</td>
             <td>{{ cliente.telefone }}</td>
             <td>{{ cliente.email }}</td>

@@ -1,8 +1,10 @@
 {% extends 'cadastros/base.html' %}
 
 {% block content %}
-  <h2>Detalhes do Cliente</h2>
-  <img src="{{ clientes.foto.url }}" alt="{{ cliente.nome }}" width="150">
+  <h2>Ficha do Cliente: {{ clientes.nome }}</h2>
+  <br>
+  <img src="{{ clientes.foto.url }}" alt="{{ clientes.nome }}" width="150">
+  <br><br>
   <p><strong>Nome:</strong> {{ clientes.nome }}</p>
   <p><strong>CPF:</strong> {{ clientes.cpf }}</p>
   <p><strong>Telefone:</strong> {{ clientes.telefone }}</p>
