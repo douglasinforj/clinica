@@ -62,15 +62,23 @@ def cliente_delete(request, id):
 
 
 @login_required
-def exame_datail(request, id):
+def exame_detail(request, id):
     exames = get_object_or_404(Exame, id=id)
     return render(request, 'cadastros/exame_detail.html', {'exames': exames})
 
 
 @login_required
 def exame_list_all(request):
-    exames = Exame.objects.all()
-    return render(request, 'cadastros/exame_list_all.html', {'exames': exames})
+    termo_pesquisa = request.GET.get('q', '')
+
+    exames = Exame.objects.filter(
+        Q(nome__icontains=termo_pesquisa) |
+        Q(descricao__icontains=termo_pesquisa)
+        
+    )
+
+    return render(request, 'cadastros/exame_list_all.html', {'exames': exames, 'termo_pesquisa': termo_pesquisa})
+
 
 
 
