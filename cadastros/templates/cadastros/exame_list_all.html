@@ -3,6 +3,7 @@
 
 {% block content %}
   <h2>Lista de Exames</h2>
+  
   <table class="table table-bordered">
     <thead>
         <tr>
@@ -18,12 +19,12 @@
     <tbody>
         {% for exame in exames %}
         <tr>
-            <td>{{ exames.id }}</td>
-            <td>{{ exames.cliente.nome }}</td>
-            <td>{{ exames.tipo_exame }}</td>
-            <td>{{ exames.data_exame }}</td>
-            <td>{{ exames.resultado }}</td>
-            <td>{{ exames.preco }}</td>
+            <td>{{ exame.id }}</td>
+            <td>{{ exame.cliente.nome }}</td>
+            <td>{{ exame.tipo_exame }}</td>
+            <td>{{ exame.data_exame|date:"d/m/Y" }}</td>
+            <td>{{ exame.resultado }}</td>
+            <td>{{ exame.preco }}</td>
             <td>
                 <a href="{% url 'exame_detail' exame.id %}" class="btn btn-info btn-sm">Detalhes</a>
             </td>
