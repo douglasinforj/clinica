@@ -1,0 +1,38 @@
+<!-- templates/cadastros/exame_list.html -->
+{% extends 'cadastros/base.html' %}
+
+{% block content %}
+  <h2>Lista de Exames</h2>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Tipo de Exame</th>
+            <th>Data do Exame</th>
+            <th>Resultado</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for exame in exames %}
+        <tr>
+            <td>{{ exames.id }}</td>
+            <td>{{ exames.cliente.nome }}</td>
+            <td>{{ exames.tipo_exame }}</td>
+            <td>{{ exames.data_exame }}</td>
+            <td>{{ exames.resultado }}</td>
+            <td>{{ exames.preco }}</td>
+            <td>
+                <a href="{% url 'exame_detail' exame.id %}" class="btn btn-info btn-sm">Detalhes</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">Não há exames registrados.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
