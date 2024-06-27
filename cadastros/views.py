@@ -72,8 +72,8 @@ def exame_list_all(request):
     termo_pesquisa = request.GET.get('q', '')
 
     exames = Exame.objects.filter(
-        Q(nome__icontains=termo_pesquisa) |
-        Q(descricao__icontains=termo_pesquisa)
+        Q(cliente__nome__icontains=termo_pesquisa) |  # Filtra pelo nome do cliente, utilizando a chave estrangeira da tabela cliente
+        Q(cliente__cpf__icontains=termo_pesquisa)     # Filtra pelo CPF do cliente, utilizando a chave estrangeira da tabela cliente
         
     )
 
