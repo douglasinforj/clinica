@@ -16,17 +16,19 @@
             <th>Ações</th>
         </tr>
     </thead>
+    
     <tbody>
         {% for exame in exames %}
         <tr>
             <td>{{ exame.id }}</td>
-            <td>{{ exame.cliente.nome }}</td>
+            <td><a href="{% url 'cliente_detail' exame.cliente.id %}">{{ exame.cliente.nome }}</a></td>
             <td>{{ exame.tipo_exame }}</td>
             <td>{{ exame.data_exame|date:"d/m/Y" }}</td>
             <td>{{ exame.resultado }}</td>
             <td>{{ exame.preco }}</td>
             <td>
                 <a href="{% url 'exame_detail' exame.id %}" class="btn btn-info btn-sm">Detalhes</a>
+                
             </td>
         </tr>
         {% empty %}
