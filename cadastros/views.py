@@ -62,6 +62,13 @@ def cliente_delete(request, id):
 
 
 
+def exame_datail(request, id):
+    exames = get_object_or_404(Exame, id=id)
+    return render(request, 'cadastros/exame_detail.html', {'exames': exames})
+
+
+
+
 @login_required
 def exame_list(request, id):
     cliente = get_object_or_404(Cliente, id=id)
