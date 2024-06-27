@@ -12,5 +12,6 @@ urlpatterns = [
     path('clientes/<int:id>/exames/novo/', views.exame_create, name='exame_create'),
     path('clientes/<int:cliente_id>/exames/<int:id>/editar/', views.exame_update, name='exame_update'),
     path('clientes/<int:cliente_id>/exames/<int:id>/deletar/', views.exame_delete, name='exame_delete'),
-    path('exemes/<init:id>/', views.exame_datail, name='exame_detail')
+    path('exames/<init:id>/', views.exame_datail, name='exame_detail'),
+    path('exames/', views.exame_list_all, name='exame_list_all'),
 ]
