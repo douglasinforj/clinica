@@ -1,0 +1,44 @@
+{% extends 'cadastros/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <h2 class="text-center mb-4">Exame do Cliente: {{ clientes.nome }}</h2>
+          <div class="text-center">
+              <!--<img src="{{ clientes.foto.url }}" alt="{{ clientes.nome }}" width="150">-->
+          </div>
+          <br>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                          <th>Cliente:</th>
+                          <td>{{ exames.cliente.nome }}</td>
+                      </tr>
+                      <tr>
+                          <th>Tipo de Exame:</th>
+                          <td>{{ exames.tipo_exame }}</td>
+                      </tr>
+                      <tr>
+                          <th>Resultado:</th>
+                          <td>{{ exames.resultado }}</td>
+                      </tr>
+                      <tr>
+                          <th>Preço:</th>
+                          <td>{{ exames.preco }}</td>
+                      </tr>
+                      <tr>
+                          <th>Data do Exame:</th>
+                          <td>{{ exames.data_exame }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <a href="{% url 'exame_list_all' %}" class="btn btn-primary">Voltar para a lista de Exames</a>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}
