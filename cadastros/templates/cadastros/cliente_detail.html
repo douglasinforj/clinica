@@ -1,14 +1,56 @@
 {% extends 'cadastros/base.html' %}
 
 {% block content %}
-  <h2>Ficha do Cliente: {{ clientes.nome }}</h2>
-  <br>
-  <img src="{{ clientes.foto.url }}" alt="{{ clientes.nome }}" width="150">
-  <br><br>
-  <p><strong>Nome:</strong> {{ clientes.nome }}</p>
-  <p><strong>CPF:</strong> {{ clientes.cpf }}</p>
-  <p><strong>Telefone:</strong> {{ clientes.telefone }}</p>
-  <p><strong>Email:</strong> {{ clientes.email }}</p>
-  <p><strong>Data de Nascimento:</strong> {{ clientes.data_nascimento }}</p>
-  <a href="{% url 'cliente_list' %}">Voltar para a lista de clientes</a>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <h2 class="text-center mb-4">Ficha do Cliente: {{ clientes.nome }}</h2>
+          <div class="text-center">
+              <img src="{{ clientes.foto.url }}" alt="{{ clientes.nome }}" width="150">
+          </div>
+          <br>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                          <th>Nome:</th>
+                          <td>{{ clientes.nome }}</td>
+                      </tr>
+                      <tr>
+                          <th>CPF:</th>
+                          <td>{{ clientes.cpf }}</td>
+                      </tr>
+                      <tr>
+                          <th>Telefone:</th>
+                          <td>{{ clientes.telefone }}</td>
+                      </tr>
+                      <tr>
+                          <th>Email:</th>
+                          <td>{{ clientes.email }}</td>
+                      </tr>
+                      <tr>
+                          <th>Data de Nascimento:</th>
+                          <td>{{ clientes.data_nascimento }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <a href="{% url 'cliente_list' %}" class="btn btn-primary">Voltar para a lista de clientes</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 {% endblock %}
