@@ -1,15 +1,10 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sistema de Cadastro{% endblock %}</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
-
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,11 +38,28 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Conteúdo da página -->
     <div class="container mt-4">
         {% block content %}
-
+        <!-- Conteúdo específico da página vai aqui -->
         {% endblock %}
     </div>
-</body>
 
+    <!-- Scripts do Bootstrap e jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+5RAq2U7zc00hrGx4h4eyOJFh/w9Un/T5+OrCbd+C5KbSAB"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            // Fecha o menu ao clicar em um item
+            $('.navbar-nav>li>a').on('click', function(){
+                $('.navbar-collapse').collapse('hide');
+            });
+        });
+    </script>
+</body>
 </html>
