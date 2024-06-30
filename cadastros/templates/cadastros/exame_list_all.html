@@ -3,6 +3,11 @@
 
 {% block content %}
   <h2>Lista de Exames</h2>
+
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  name='q' value="{{ termo_pesquisa }}">
+    <button class="btn btn-outline-success my-3 my-sm-3" type="submit">Search</button>
+  </form>
   
   <table class="table table-bordered">
     <thead>
