@@ -127,7 +127,7 @@ DATE_INPUT_FORMATS = ['%d/%m/%Y']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-LOGIN_REDIRECT_URL = 'cliente_list'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
 
 LOGIN_URL = 'login'
